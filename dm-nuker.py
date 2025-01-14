@@ -1,3 +1,15 @@
+import subprocess
+import sys
+
+def install_package(package):
+    try:
+        __import__(package)
+    except ImportError:
+        print(f"Installing {package}...")
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+install_package("requests")
+
 import requests
 import json
 import time
